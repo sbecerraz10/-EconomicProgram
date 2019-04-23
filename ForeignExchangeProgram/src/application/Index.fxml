@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="510.0" prefWidth="554.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="application.IndexController">
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.IndexController">
    <children>
       <Label layoutX="155.0" layoutY="15.0" prefHeight="35.0" prefWidth="212.0" style="-fx-border-color: #C0C0C0; -fx-border-radius: 10;" text="Foreign Exchange Program" textAlignment="CENTER">
          <font>
@@ -23,10 +22,10 @@
                </font>
             </Label>
             <Label layoutX="14.0" layoutY="39.0" text="Add a market:" />
-            <TextField layoutX="14.0" layoutY="69.0" />
-            <Button layoutX="14.0" layoutY="104.0" mnemonicParsing="false" text="Browse" />
-            <Button layoutX="78.0" layoutY="104.0" mnemonicParsing="false" text="Load" />
-            <Button layoutX="24.0" layoutY="180.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="175.0" text="Press me to Analyze the Data" />
+            <TextField fx:id="tfCapitalMarket" layoutX="14.0" layoutY="69.0" />
+            <Button fx:id="btBrowseCapital" layoutX="14.0" layoutY="104.0" mnemonicParsing="false" text="Browse" />
+            <Button fx:id="btLoadCapital" layoutX="78.0" layoutY="104.0" mnemonicParsing="false" text="Load" />
+            <Button fx:id="btAnalyzeCapital" layoutX="24.0" layoutY="180.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="175.0" text="Press me to Analyze the Data" />
          </children>
       </Pane>
       <Pane layoutX="40.0" layoutY="110.0" prefHeight="375.0" prefWidth="229.0" style="-fx-border-color: #C0C0C0;">
@@ -37,10 +36,10 @@
                </font>
             </Label>
             <Label layoutX="14.0" layoutY="41.0" text="Add a market:" />
-            <TextField layoutX="14.0" layoutY="72.0" />
-            <Button layoutX="14.0" layoutY="106.0" mnemonicParsing="false" text="Browse" />
-            <Button layoutX="76.0" layoutY="106.0" mnemonicParsing="false" text="Load" />
-            <Button layoutX="21.0" layoutY="180.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="175.0" text="Press me to Analyze the Data" />
+            <TextField fx:id="tfForexMarket" layoutX="14.0" layoutY="72.0" />
+            <Button fx:id="btBrowseForex" layoutX="14.0" layoutY="106.0" mnemonicParsing="false" text="Browse" />
+            <Button fx:id="btLoadForex" layoutX="76.0" layoutY="106.0" mnemonicParsing="false" text="Load" />
+            <Button fx:id="btAnalyzeForex" layoutX="21.0" layoutY="180.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="175.0" text="Press me to Analyze the Data" />
          </children>
       </Pane>
    </children>
