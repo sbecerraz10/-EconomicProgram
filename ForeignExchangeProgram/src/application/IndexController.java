@@ -3,8 +3,10 @@ package application;
 import java.io.File;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
 
 public class IndexController {
@@ -35,6 +37,7 @@ public class IndexController {
 	
 	public void initialize() {
 		clickedSearchFile();
+		clickedLoadFile();
 	}
 
 	private void clickedSearchFile() {
@@ -59,6 +62,40 @@ public class IndexController {
 			}
 			
 		});
+	}
+	
+	private void clickedLoadFile() {
+		btLoadCapital.setOnMouseClicked((MouseEvent)->{
+			try {	
+				if(file!=null)
+				Main.getMarket().setCurrentFile(file);
+				Main.getMarket().loadCapitalMarket();
+			}
+			catch(NullPointerException e) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Numbers");
+				alert.setHeaderText("Exception");
+				alert.setContentText("Please insert numbers");
+				alert.showAndWait();
+			}	
+		});
+		
+		btLoadForex.setOnMouseClicked((MouseEvent)->{
+			try {	
+				if(file!=null)
+				Main.getMarket().setCurrentFile(file);
+				Main.getMarket().loadForexMarket();
+			}
+			catch(NullPointerException e) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Numbers");
+				alert.setHeaderText("Exception");
+				alert.setContentText("Please insert numbers");
+				alert.showAndWait();
+			}	
+		});
+		
+		
 	}
 	
 }

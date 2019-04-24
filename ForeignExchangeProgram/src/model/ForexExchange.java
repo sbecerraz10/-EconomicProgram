@@ -1,18 +1,18 @@
 package model;
 
-import java.time.LocalDate;
+import java.util.Date;
 
-public class ForexExchange {
+public class ForexExchange implements Comparable<ForexExchange>{
 	
 	
 	
 
 	private String name;
-	private LocalDate date;
-	private double price;
+	private Date date;
+	private Double price;
 	
 	
-	public ForexExchange(String name, LocalDate date, double price) {
+	public ForexExchange(String name, Date date, double price) {
 		super();
 		this.name = name;
 		this.date = date;
@@ -30,17 +30,17 @@ public class ForexExchange {
 	}
 
 
-	public LocalDate getDate() {
+	public Date getDate() {
 		return date;
 	}
 
 
-	public void setDate(LocalDate date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
 
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
@@ -48,6 +48,18 @@ public class ForexExchange {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+
+
+	@Override
+	public int compareTo(ForexExchange o) {
+		// TODO Auto-generated method stub
+		if(this.price < o.price) {
+			return -1;
+		}else{
+			return 1;
+		}
+	}
+	
 	
 	
 	

@@ -1,23 +1,23 @@
 package model;
 
-import structures.RedBlackTree;
+import trees.blackRedTree.RedBlackBST;
 
 public class ForexMarket {
 	
 	//RedBlackTree
 	
-	RedBlackTree<ForexExchange> forexMarket;
+	RedBlackBST<ForexExchange,Double> forexMarket;
 
-	public ForexMarket(RedBlackTree<ForexExchange> forexMarket) {
+	public ForexMarket() {
 		super();
-		this.forexMarket = forexMarket;
+		forexMarket = new RedBlackBST<ForexExchange,Double>();
 	}
 
-	public RedBlackTree<ForexExchange> getForexMarket() {
+	public RedBlackBST<ForexExchange,Double> getForexMarket() {
 		return forexMarket;
 	}
 
-	public void setForexMarket(RedBlackTree<ForexExchange> forexMarket) {
+	public void setForexMarket(RedBlackBST<ForexExchange,Double> forexMarket) {
 		this.forexMarket = forexMarket;
 	}
 	
