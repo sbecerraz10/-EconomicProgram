@@ -23,6 +23,8 @@ public class Market {
 	
 	private File currentFile;
 	
+	private CapitalMarket actualCMarket;
+	private ForexMarket actualFMarket;
 	
 	public Market() {
 		super();
@@ -37,11 +39,12 @@ public class Market {
 		String cadena = "";
 		
 		ForexMarket forexMarket = new ForexMarket();
-		
+		String name1 = "";
 		
 		while((cadena= br.readLine())!= null) {
 			String[] elements = cadena.split(",");
 			String name = elements[0];
+			name1 = name;
 			String cdate = elements[1];
 			String cdate1 = cdate.substring(1,cdate.length());
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy hh:mm");
@@ -57,7 +60,7 @@ public class Market {
 			ForexExchange forexExchange = new ForexExchange(name,date,price);
 			forexMarket.getForexMarket().add(forexExchange, forexExchange.getPrice());
 		}
-		
+		forexMarket.setName(name1);
 		forexMarkets.add(forexMarket);
 		
 		br.close();
@@ -77,11 +80,12 @@ public class Market {
 			String cadena = "";
 			
 			CapitalMarket capitalMarket = new CapitalMarket();
-			
+			String name1 = "";
 			
 			while((cadena= br.readLine())!= null) {
 				String[] elements = cadena.split(";");
 				String name = elements[0];
+				name1 = name;
 				String cdate = elements[1];
 				String cdate1 = cdate.substring(1,cdate.length());
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy hh:mm");
@@ -97,7 +101,7 @@ public class Market {
 				ForexExchange forexExchange = new ForexExchange(name,date,price);
 				capitalMarket.getCapitalMarket().add(forexExchange, forexExchange.getPrice());
 			}
-			
+			capitalMarket.setName(name1);
 			capitalMarkets.add(capitalMarket);
 			
 			br.close();
@@ -111,6 +115,36 @@ public class Market {
 	}
 	
 	
+	public ArrayList<String> listOfMarkets(){
+		
+		ArrayList<String> list = new ArrayList<String>();
+		for(int i=0; i < forexMarkets.size(); i++) {
+			list.add(forexMarkets.get(i).getName());
+		}
+		for(int i=0; i < capitalMarkets.size(); i++) {
+			list.add(capitalMarkets.get(i).getName());
+		}
+		
+		return list;
+	}
+	
+	public void searchForMarket(String name) {
+		if(name.startsWith("#")) {
+			for (int i = 0; i < capitalMarkets.size(); i++) {
+				if(name.equals(capitalMarkets.get(i).getName())) {
+					actualCMarket = capitalMarkets.get(i);
+					actualFMarket = null;
+				}
+			}
+		}else {
+			for (int i = 0; i < forexMarkets.size(); i++) {
+				if(name.equals(forexMarkets.get(i).getName())) {
+					actualFMarket = forexMarkets.get(i);
+					actualCMarket = null;
+				}
+			}			
+		}
+	}
 	
 	
 	public ArrayList<ForexMarket> getForexMarkets() {
@@ -138,6 +172,22 @@ public class Market {
 
 	public void setCurrentFile(File currentFile) {
 		this.currentFile = currentFile;
+	}
+
+	public CapitalMarket getActualCMarket() {
+		return actualCMarket;
+	}
+
+	public void setActualCMarket(CapitalMarket actualCMarket) {
+		this.actualCMarket = actualCMarket;
+	}
+
+	public ForexMarket getActualFMarket() {
+		return actualFMarket;
+	}
+
+	public void setActualFMarket(ForexMarket actualFMarket) {
+		this.actualFMarket = actualFMarket;
 	}
 	
 	

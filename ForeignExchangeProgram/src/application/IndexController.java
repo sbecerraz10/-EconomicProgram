@@ -1,13 +1,22 @@
 package application;
 
 import java.io.File;
+import java.io.IOException;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class IndexController {
 	
@@ -16,6 +25,10 @@ public class IndexController {
 	private TextField tfForexMarket;
 	@FXML
 	private TextField tfCapitalMarket;
+	@FXML
+	private TextField tfInitialDate;
+	@FXML
+	private TextField tfFinalDate;
 	@FXML
 	private Button btBrowseForex;
 	@FXML
@@ -28,6 +41,9 @@ public class IndexController {
 	private Button btAnalyzeForex;	
 	@FXML
 	private Button btAnalyzeCapital;
+	@FXML
+	private Button btGo;
+	
 	
 	
 	private File file;
@@ -36,8 +52,33 @@ public class IndexController {
 	
 	
 	public void initialize() {
+		btBrowseCapital.setDisable(true);
+		btBrowseForex.setDisable(true);
+		btLoadForex.setDisable(true);
+		btLoadCapital.setDisable(true);
+		btAnalyzeCapital.setDisable(true);
+		btAnalyzeForex.setDisable(true);
+		clickedGo();
 		clickedSearchFile();
 		clickedLoadFile();
+		analyzeData();
+	}
+	
+	private void clickedGo() {
+		btGo.setOnMouseClicked((MouseEvent)->{
+			if(tfInitialDate.getText() != "" && tfFinalDate.getText() != "") {
+				btBrowseCapital.setDisable(false); btBrowseForex.setDisable(false);
+				btLoadForex.setDisable(false); btLoadCapital.setDisable(false);
+				btAnalyzeCapital.setDisable(false); btAnalyzeForex.setDisable(false);
+			}else {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("No data");
+				alert.setHeaderText("Exception");
+				alert.setContentText("Please insert a date");
+				alert.showAndWait();
+			}
+				
+		});
 	}
 
 	private void clickedSearchFile() {
@@ -69,6 +110,7 @@ public class IndexController {
 			try {	
 				if(file!=null)
 				Main.getMarket().setCurrentFile(file);
+				//Cargar el metodo que recorta el archivo
 				Main.getMarket().loadCapitalMarket();
 			}
 			catch(NullPointerException e) {
@@ -84,6 +126,7 @@ public class IndexController {
 			try {	
 				if(file!=null)
 				Main.getMarket().setCurrentFile(file);
+				//Cargar el metodo que recorta el archivo
 				Main.getMarket().loadForexMarket();
 			}
 			catch(NullPointerException e) {
@@ -94,8 +137,41 @@ public class IndexController {
 				alert.showAndWait();
 			}	
 		});
+	}
+	
+	
+	private void analyzeData() {
+		btAnalyzeForex.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent t) {
+				goToAnalyze(t);
+			}
+			
+		});
 		
-		
+		btAnalyzeCapital.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent t) {
+				goToAnalyze(t);
+			}
+			
+		});
+				
+	}
+	
+	private void goToAnalyze(MouseEvent t) {
+		try { 
+			FXMLLoader loader=new FXMLLoader(getClass().getResource("Analyze.fxml")); 
+			Parent showThrow = loader.load(); 
+			Scene sceneThrow = new Scene(showThrow);
+			Stage windowThrow = (Stage)((Node) t.getSource()).getScene().getWindow();
+			//windowThrow.getIcons().add(new Image("images/Pokebola.png"));
+			windowThrow.setScene(sceneThrow);
+			windowThrow.show();
+			
+		} catch (IOException e) { 
+				e.printStackTrace();
+		}
 	}
 	
 }

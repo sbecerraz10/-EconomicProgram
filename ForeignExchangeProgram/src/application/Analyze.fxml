@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AnalyzeController">
+   <top>
+      <Pane prefHeight="601.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane layoutY="59.0" prefHeight="540.0" prefWidth="313.0">
+               <children>
+                  <ChoiceBox fx:id="cbSelectMarket" layoutX="14.0" layoutY="30.0" prefWidth="150.0" />
+                  <Label layoutX="12.0" layoutY="6.0" text="Select the Forex Market/Capital Market" />
+                  <Label layoutX="14.0" layoutY="63.0" text="Type the time range" />
+                  <TextField fx:id="tfFromSingleMarket" layoutX="103.0" layoutY="87.0" />
+                  <TextField fx:id="tfToSingleMarket" layoutX="103.0" layoutY="127.0" />
+                  <Label layoutX="55.0" layoutY="91.0" prefHeight="17.0" prefWidth="34.0" text="From:" />
+                  <Label layoutX="55.0" layoutY="131.0" prefHeight="17.0" prefWidth="34.0" text="To:" />
+                  <Label layoutX="14.0" layoutY="164.0" text="Period of greatest growth" />
+                  <Label layoutX="35.0" layoutY="191.0" prefHeight="17.0" prefWidth="34.0" text="From:" />
+                  <Label layoutX="35.0" layoutY="221.0" prefHeight="17.0" prefWidth="34.0" text="To:" />
+                  <TextField fx:id="tfFromGreatestGrowthSingle" layoutX="103.0" layoutY="187.0" />
+                  <TextField fx:id="tfToGreatestGrowthSingle" layoutX="103.0" layoutY="217.0" />
+                  <Label layoutX="12.0" layoutY="262.0" text="Highest price" />
+                  <TextField fx:id="tfHighestSinglePrice" layoutX="103.0" layoutY="257.0" />
+                  <Label layoutX="12.0" layoutY="302.0" text="Lowest price" />
+                  <TextField fx:id="tfLowestSinglePrice" layoutX="103.0" layoutY="297.0" />
+                  <TextField fx:id="tfFromAbovePrice" layoutX="373.0" layoutY="87.0" />
+                  <TextField fx:id="tfToAbovePrice" layoutX="373.0" layoutY="117.0" />
+                  <TextField fx:id="tfFromHighestGrowth" layoutX="363.0" layoutY="357.0" />
+                  <TextField fx:id="tfToHighestGrowth" layoutX="363.0" layoutY="387.0" />
+               </children>
+            </Pane>
+            <Pane layoutX="313.0" layoutY="59.0" prefHeight="539.0" prefWidth="281.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="5.0" text="Forex Markets/Capital Markets  above a price" />
+                  <Label layoutX="21.0" layoutY="38.0" text="Price:" />
+                  <TextField fx:id="tfMarketAbovePrice" layoutX="66.0" layoutY="34.0" />
+                  <ListView fx:id="lvAboveAPrice" layoutX="21.0" layoutY="150.0" prefHeight="148.0" prefWidth="200.0" />
+                  <Label layoutX="12.0" layoutY="63.0" text="Type the time range" />
+                  <Label layoutX="13.0" layoutY="87.0" prefHeight="17.0" prefWidth="34.0" text="From:" />
+                  <Label layoutX="16.0" layoutY="118.0" prefHeight="17.0" prefWidth="34.0" text="To:" />
+                  <Label layoutX="16.0" layoutY="312.0" text="Capital Markets with the highest growth" />
+                  <Label layoutX="11.0" layoutY="331.0" text="Type the time range" />
+                  <Label layoutX="13.0" layoutY="358.0" prefHeight="17.0" prefWidth="34.0" text="From:" />
+                  <Label layoutX="16.0" layoutY="388.0" prefHeight="17.0" prefWidth="34.0" text="To:" />
+                  <ListView fx:id="lvHighestGrowth" layoutX="21.0" layoutY="420.0" prefHeight="78.0" prefWidth="191.0" />
+               </children>
+            </Pane>
+            <Label layoutX="222.0" layoutY="14.0" text="Analysis of Data">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </top>
+</BorderPane>

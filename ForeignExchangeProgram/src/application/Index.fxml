@@ -3,44 +3,59 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.IndexController">
-   <children>
-      <Label layoutX="155.0" layoutY="15.0" prefHeight="35.0" prefWidth="212.0" style="-fx-border-color: #C0C0C0; -fx-border-radius: 10;" text="Foreign Exchange Program" textAlignment="CENTER">
-         <font>
-            <Font name="Arial Bold" size="16.0" />
-         </font>
-      </Label>
-      <Pane layoutX="284.0" layoutY="110.0" prefHeight="375.0" prefWidth="239.0" style="-fx-border-color: #C0C0C0;">
+
+<BorderPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.IndexController">
+   <top>
+      <Pane prefHeight="590.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="14.0" layoutY="6.0" text="Capital Market">
+            <Pane layoutX="21.0" layoutY="122.0" prefHeight="462.0" prefWidth="267.0" style="-fx-border-color: #C0C0C0;">
+               <children>
+                  <Label layoutX="14.0" layoutY="6.0" text="Forex Market">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="41.0" text="Add a market:" />
+                  <TextField fx:id="tfForexMarket" layoutX="14.0" layoutY="72.0" />
+                  <Button fx:id="btBrowseForex" layoutX="14.0" layoutY="106.0" mnemonicParsing="false" text="Browse" />
+                  <Button fx:id="btLoadForex" layoutX="76.0" layoutY="106.0" mnemonicParsing="false" text="Load" />
+                  <Button fx:id="btAnalyzeForex" layoutX="21.0" layoutY="180.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="175.0" text="Press me to Analyze the Data" />
+               </children>
+            </Pane>
+            <Label layoutX="196.0" layoutY="14.0" prefHeight="35.0" prefWidth="212.0" style="-fx-border-color: #C0C0C0; -fx-border-radius: 10;" text="Foreign Exchange Program" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <Pane layoutX="326.0" layoutY="121.0" prefHeight="463.0" prefWidth="249.0" style="-fx-border-color: #C0C0C0;">
+               <children>
+                  <Label layoutX="14.0" layoutY="6.0" text="Capital Market">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="39.0" text="Add a market:" />
+                  <TextField fx:id="tfCapitalMarket" layoutX="14.0" layoutY="69.0" />
+                  <Button fx:id="btBrowseCapital" layoutX="14.0" layoutY="104.0" mnemonicParsing="false" text="Browse" />
+                  <Button fx:id="btLoadCapital" layoutX="78.0" layoutY="104.0" mnemonicParsing="false" text="Load" />
+                  <Button fx:id="btAnalyzeCapital" layoutX="24.0" layoutY="180.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="175.0" text="Press me to Analyze the Data" />
+               </children>
+            </Pane>
+            <Label layoutX="21.0" layoutY="70.0" text="Please type the time range">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="39.0" text="Add a market:" />
-            <TextField fx:id="tfCapitalMarket" layoutX="14.0" layoutY="69.0" />
-            <Button fx:id="btBrowseCapital" layoutX="14.0" layoutY="104.0" mnemonicParsing="false" text="Browse" />
-            <Button fx:id="btLoadCapital" layoutX="78.0" layoutY="104.0" mnemonicParsing="false" text="Load" />
-            <Button fx:id="btAnalyzeCapital" layoutX="24.0" layoutY="180.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="175.0" text="Press me to Analyze the Data" />
+            <TextField fx:id="tfInitialDate" layoutX="249.0" layoutY="68.0" />
+            <TextField fx:id="tfFinalDate" layoutX="449.0" layoutY="68.0" />
+            <Label layoutX="207.0" layoutY="72.0" text="From:" />
+            <Label layoutX="407.0" layoutY="72.0" text="To:" />
+            <Button fx:id="btGo" layoutX="485.0" layoutY="94.0" mnemonicParsing="false" text="Go!" />
          </children>
       </Pane>
-      <Pane layoutX="40.0" layoutY="110.0" prefHeight="375.0" prefWidth="229.0" style="-fx-border-color: #C0C0C0;">
-         <children>
-            <Label layoutX="14.0" layoutY="6.0" text="Forex Market">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="14.0" layoutY="41.0" text="Add a market:" />
-            <TextField fx:id="tfForexMarket" layoutX="14.0" layoutY="72.0" />
-            <Button fx:id="btBrowseForex" layoutX="14.0" layoutY="106.0" mnemonicParsing="false" text="Browse" />
-            <Button fx:id="btLoadForex" layoutX="76.0" layoutY="106.0" mnemonicParsing="false" text="Load" />
-            <Button fx:id="btAnalyzeForex" layoutX="21.0" layoutY="180.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="175.0" text="Press me to Analyze the Data" />
-         </children>
-      </Pane>
-   </children>
-</AnchorPane>
+   </top>
+</BorderPane>
