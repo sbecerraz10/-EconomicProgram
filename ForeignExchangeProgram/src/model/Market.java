@@ -161,6 +161,26 @@ public class Market {
 		}
 	}
 	
+	public ArrayList<String> listOfAboveAPrice(Double price){
+		ArrayList<String> list = new ArrayList<String>();
+		
+		for (int i = 0; i < capitalMarkets.size(); i++) {
+			if(capitalMarkets.get(i).aboveAPrice(price)) {
+				list.add(capitalMarkets.get(i).getName());
+			}
+		}
+		
+		for (int i = 0; i < forexMarkets.size(); i++) {
+			if(forexMarkets.get(i).aboveAPrice(price)) {
+				list.add(forexMarkets.get(i).getName());
+			}
+		}
+		
+		
+		return list;
+		
+	}
+	
 	
 	public ArrayList<ForexMarket> getForexMarkets() {
 		return forexMarkets;

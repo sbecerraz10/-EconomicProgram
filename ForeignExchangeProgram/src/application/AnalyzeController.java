@@ -1,12 +1,23 @@
 package application;
 
+import java.io.IOException;
+
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import model.CapitalMarket;
 import model.ForexMarket;
 
@@ -26,6 +37,8 @@ public class AnalyzeController {
 	
 	@FXML private ListView lvAboveAPrice;
 	@FXML private ListView lvHighestGrowth;
+	@FXML private Button searchAboveAPrice;
+	
 	
 	public void initialize() {
 		selectMarket();
@@ -40,7 +53,26 @@ public class AnalyzeController {
 	    .addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue) -> displayData(newValue));
 		
 		//displayData(cbSelectMarket.getSelectionModel().getSelectedItem());
-		System.out.println("INN");
+		searchAboveAPrice();
+	}
+
+
+	private void searchAboveAPrice() {
+		searchAboveAPrice.setOnMouseClicked((MouseEvent)->{
+			try {	
+				lvAboveAPrice.getItems().clear();
+				Double price = Double.parseDouble(tfMarketAbovePrice.getText());
+				ObservableList<String> list = FXCollections.observableArrayList(Main.getMarket().listOfAboveAPrice(price));
+				lvAboveAPrice.getItems().addAll(list);
+			}
+			catch(Exception e) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Numbers");
+				alert.setHeaderText("Exception");
+				alert.setContentText("Please insert numbers");
+				alert.showAndWait();
+			}	
+		});
 	}
 
 
@@ -60,6 +92,22 @@ public class AnalyzeController {
 				tfLowestSinglePrice.setText(actualCapital.minValue()+"");			
 			}
 		}	
+	}
+	
+	@FXML 
+	public void goToIndex(MouseEvent t) {
+		try { 
+			FXMLLoader loader=new FXMLLoader(getClass().getResource("Index.fxml")); 
+			Parent showThrow = loader.load(); 
+			Scene sceneThrow = new Scene(showThrow);
+			Stage windowThrow = (Stage)((Node) t.getSource()).getScene().getWindow();
+			//windowThrow.getIcons().add(new Image("images/Pokebola.png"));
+			windowThrow.setScene(sceneThrow);
+			windowThrow.show();
+			
+		} catch (IOException e) { 
+				e.printStackTrace();
+		}
 	}
 	
 	
