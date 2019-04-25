@@ -1,5 +1,6 @@
 package application;
 
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -34,19 +35,27 @@ public class AnalyzeController {
 	private void selectMarket() {
 		ObservableList<String> list = FXCollections.observableArrayList(Main.getMarket().listOfMarkets());
 		cbSelectMarket.getItems().addAll(list);
-		displayData(cbSelectMarket.getSelectionModel().getSelectedItem());
+		cbSelectMarket.getSelectionModel()
+	    .selectedItemProperty()
+	    .addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue) -> displayData(newValue));
+		
+		//displayData(cbSelectMarket.getSelectionModel().getSelectedItem());
+		System.out.println("INN");
 	}
 
 
 	private void displayData(String name) {
+		System.out.println(name);
 		if(name!=null) {
 			Main.getMarket().searchForMarket(name);
 			CapitalMarket actualCapital = Main.getMarket().getActualCMarket();
 			ForexMarket actualForex = Main.getMarket().getActualFMarket();
 			if(actualCapital==null && actualForex != null) {
+				System.out.println("INN");
 				tfHighestSinglePrice.setText(actualForex.maxValue()+"");
 				tfLowestSinglePrice.setText(actualForex.minValue()+"");
 			}else if((actualCapital!=null && actualForex == null)) {
+				System.out.println("INN");
 				tfHighestSinglePrice.setText(actualCapital.maxValue()+"");
 				tfLowestSinglePrice.setText(actualCapital.minValue()+"");			
 			}

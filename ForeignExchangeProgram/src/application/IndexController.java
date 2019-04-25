@@ -2,6 +2,9 @@ package application;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -70,6 +73,25 @@ public class IndexController {
 				btBrowseCapital.setDisable(false); btBrowseForex.setDisable(false);
 				btLoadForex.setDisable(false); btLoadCapital.setDisable(false);
 				btAnalyzeCapital.setDisable(false); btAnalyzeForex.setDisable(false);
+				String cdate = tfInitialDate.getText();
+				String fdate = tfFinalDate.getText();
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy hh:mm");
+				SimpleDateFormat sdff = new SimpleDateFormat("dd/M/yyyy hh:mm");
+				Date inidate = null;
+				Date findate = null;
+				try {
+					inidate = sdf.parse(cdate);
+					findate = sdff.parse(fdate);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				Main.getMarket().setInitialDate(inidate);
+				Main.getMarket().setFinalDate(findate);
+				
+				
+				
 			}else {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("No data");

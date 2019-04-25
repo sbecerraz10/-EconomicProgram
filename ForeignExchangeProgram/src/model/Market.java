@@ -21,7 +21,8 @@ public class Market {
 	private ArrayList<ForexMarket> forexMarkets;
 	private ArrayList<CapitalMarket> capitalMarkets;
 	
-	private File currentFile;
+	private File currentFile; 
+	private Date initialDate; private Date finalDate;
 	
 	private CapitalMarket actualCMarket;
 	private ForexMarket actualFMarket;
@@ -30,6 +31,8 @@ public class Market {
 		super();
 		forexMarkets = new ArrayList<ForexMarket>();
 		capitalMarkets = new ArrayList<CapitalMarket>();
+		actualCMarket = null;
+		actualFMarket = null;
 	}
 
 	public void loadForexMarket() {
@@ -56,9 +59,14 @@ public class Market {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			double price = Double.parseDouble(elements[2]);
-			ForexExchange forexExchange = new ForexExchange(name,date,price);
-			forexMarket.getForexMarket().add(forexExchange, forexExchange.getPrice());
+			System.out.println(date.toString());
+			System.out.println(date);
+			System.out.println(date.compareTo(finalDate) + "Initial: " + date.compareTo(initialDate));
+			if(date.compareTo(finalDate) <= 0 && date.compareTo(initialDate) >= 0) {
+				double price = Double.parseDouble(elements[2]);
+				ForexExchange forexExchange = new ForexExchange(name,date,price);
+				forexMarket.getForexMarket().put(forexExchange.getPrice(), forexExchange);
+			}
 		}
 		forexMarket.setName(name1);
 		forexMarkets.add(forexMarket);
@@ -97,10 +105,17 @@ public class Market {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				//System.out.println(date.toString());
 				double price = Double.parseDouble(elements[2]);
-				ForexExchange forexExchange = new ForexExchange(name,date,price);
-				capitalMarket.getCapitalMarket().add(forexExchange, forexExchange.getPrice());
+				if(date.compareTo(finalDate) <= 0 && date.compareTo(initialDate) >= 0) {
+					System.out.println(date.toString());
+					ForexExchange forexExchange = new ForexExchange(name,date,price);
+					//capitalMarket.getCapitalMarket().add(forexExchange.getPrice(), forexExchange);
+					capitalMarket.getCapitalMarket().put(forexExchange.getPrice(), forexExchange);
+					
+				}	
 			}
+			System.out.println(capitalMarket.getCapitalMarket().size());
 			capitalMarket.setName(name1);
 			capitalMarkets.add(capitalMarket);
 			
@@ -188,6 +203,22 @@ public class Market {
 
 	public void setActualFMarket(ForexMarket actualFMarket) {
 		this.actualFMarket = actualFMarket;
+	}
+
+	public Date getInitialDate() {
+		return initialDate;
+	}
+
+	public void setInitialDate(Date initialDate) {
+		this.initialDate = initialDate;
+	}
+
+	public Date getFinalDate() {
+		return finalDate;
+	}
+
+	public void setFinalDate(Date finalDate) {
+		this.finalDate = finalDate;
 	}
 	
 	

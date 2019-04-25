@@ -12,18 +12,18 @@ public class CapitalMarket implements DataAnalysis{
 	
 	
 
-	private AVLTreeST<ForexExchange,Double> capitalMarket;
+	private AVLTreeST<Double,ForexExchange> capitalMarket;
 
 	public CapitalMarket() {
 		super();
-		capitalMarket = new AVLTreeST<ForexExchange,Double>();
+		capitalMarket = new AVLTreeST<Double,ForexExchange>();
 	}
 
-	public AVLTreeST<ForexExchange,Double> getCapitalMarket() {
+	public AVLTreeST<Double,ForexExchange> getCapitalMarket() {
 		return capitalMarket;
 	}
 
-	public void setCapitalMarket(AVLTreeST<ForexExchange,Double> capitalMarket) {
+	public void setCapitalMarket(AVLTreeST<Double,ForexExchange> capitalMarket) {
 		this.capitalMarket = capitalMarket;
 	}
 	
@@ -39,12 +39,12 @@ public class CapitalMarket implements DataAnalysis{
 
 	@Override
 	public Double maxValue() {
-		return capitalMarket.max().getPrice();
+		return capitalMarket.max();
 	}
 
 	@Override
 	public Double minValue() {
-		return capitalMarket.min().getPrice();
+		return capitalMarket.min();
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class CapitalMarket implements DataAnalysis{
 
 	@Override
 	public boolean aboveAPrice(Double price) {
-		if(capitalMarket.max().getPrice() > price) {
+		if(capitalMarket.max() > price) {
 			return true;
 		}else {
 			return false;

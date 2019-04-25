@@ -9,18 +9,18 @@ public class ForexMarket implements DataAnalysis{
 	//RedBlackTree
 	private String name;
 	
-	RedBlackBST<ForexExchange,Double> forexMarket;
+	RedBlackBST<Double,ForexExchange> forexMarket;
 
 	public ForexMarket() {
 		super();
-		forexMarket = new RedBlackBST<ForexExchange,Double>();
+		forexMarket = new RedBlackBST<Double,ForexExchange>();
 	}
 
-	public RedBlackBST<ForexExchange,Double> getForexMarket() {
+	public RedBlackBST<Double,ForexExchange> getForexMarket() {
 		return forexMarket;
 	}
 
-	public void setForexMarket(RedBlackBST<ForexExchange,Double> forexMarket) {
+	public void setForexMarket(RedBlackBST<Double,ForexExchange> forexMarket) {
 		this.forexMarket = forexMarket;
 	}
 
@@ -35,13 +35,13 @@ public class ForexMarket implements DataAnalysis{
 	@Override
 	public Double maxValue() {
 		// TODO Auto-generated method stub
-		return forexMarket.max().getPrice();
+		return forexMarket.max();
 	}
 
 	@Override
 	public Double minValue() {
 		// TODO Auto-generated method stub
-		return forexMarket.min().getPrice();
+		return forexMarket.min();
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class ForexMarket implements DataAnalysis{
 
 	@Override
 	public boolean aboveAPrice(Double price) {
-		if(forexMarket.max().getPrice() > price) {
+		if(forexMarket.max() > price) {
 			return true;
 		}else {
 			return false;
