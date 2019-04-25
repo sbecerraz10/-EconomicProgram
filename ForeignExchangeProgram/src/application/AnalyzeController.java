@@ -39,16 +39,18 @@ public class AnalyzeController {
 
 
 	private void displayData(String name) {
-		Main.getMarket().searchForMarket(name);
-		CapitalMarket actualCapital = Main.getMarket().getActualCMarket();
-		ForexMarket actualForex = Main.getMarket().getActualFMarket();
-		if(actualCapital==null && actualForex != null) {
-			tfHighestSinglePrice.setText(actualForex.maxValue()+"");
-			tfLowestSinglePrice.setText(actualForex.minValue()+"");
-		}else if((actualCapital!=null && actualForex == null)) {
-			tfHighestSinglePrice.setText(actualCapital.maxValue()+"");
-			tfLowestSinglePrice.setText(actualCapital.minValue()+"");			
-		}
+		if(name!=null) {
+			Main.getMarket().searchForMarket(name);
+			CapitalMarket actualCapital = Main.getMarket().getActualCMarket();
+			ForexMarket actualForex = Main.getMarket().getActualFMarket();
+			if(actualCapital==null && actualForex != null) {
+				tfHighestSinglePrice.setText(actualForex.maxValue()+"");
+				tfLowestSinglePrice.setText(actualForex.minValue()+"");
+			}else if((actualCapital!=null && actualForex == null)) {
+				tfHighestSinglePrice.setText(actualCapital.maxValue()+"");
+				tfLowestSinglePrice.setText(actualCapital.minValue()+"");			
+			}
+		}	
 	}
 	
 	

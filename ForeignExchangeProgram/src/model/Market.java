@@ -83,7 +83,7 @@ public class Market {
 			String name1 = "";
 			
 			while((cadena= br.readLine())!= null) {
-				String[] elements = cadena.split(";");
+				String[] elements = cadena.split(",");
 				String name = elements[0];
 				name1 = name;
 				String cdate = elements[1];
