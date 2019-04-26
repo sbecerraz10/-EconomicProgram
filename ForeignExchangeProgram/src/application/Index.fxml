@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.IndexController">
+<BorderPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.IndexController">
    <top>
       <Pane prefHeight="590.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -26,7 +25,7 @@
                   <Button fx:id="btAnalyzeForex" layoutX="21.0" layoutY="180.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="175.0" text="Press me to Analyze the Data" />
                </children>
             </Pane>
-            <Label layoutX="196.0" layoutY="14.0" prefHeight="35.0" prefWidth="212.0" style="-fx-border-color: #C0C0C0; -fx-border-radius: 10;" text="Foreign Exchange Program" textAlignment="CENTER">
+            <Label layoutX="194.0" layoutY="8.0" prefHeight="35.0" prefWidth="212.0" style="-fx-border-color: #C0C0C0; -fx-border-radius: 10;" text="Foreign Exchange Program" textAlignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="16.0" />
                </font>
@@ -55,6 +54,7 @@
             <Label layoutX="207.0" layoutY="72.0" text="From:" />
             <Label layoutX="407.0" layoutY="72.0" text="To:" />
             <Button fx:id="btGo" layoutX="485.0" layoutY="94.0" mnemonicParsing="false" text="Go!" />
+            <Label layoutX="341.0" layoutY="51.0" text="Format: Day/Month/Year 00:00" />
          </children>
       </Pane>
    </top>
