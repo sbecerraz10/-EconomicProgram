@@ -31,6 +31,7 @@ public class AnalyzeController {
 	@FXML private TextField tfToGreatestGrowthSingle;
 	@FXML private TextField tfHighestSinglePrice;
 	@FXML private TextField tfLowestSinglePrice;
+	@FXML private TextField tfPeriodTime;
 	
 	@FXML private TextField tfMarketAbovePrice;
 
@@ -86,10 +87,12 @@ public class AnalyzeController {
 				System.out.println("INN");
 				tfHighestSinglePrice.setText(actualForex.maxValue()+"");
 				tfLowestSinglePrice.setText(actualForex.minValue()+"");
+				tfPeriodTime.setText("");
 			}else if((actualCapital!=null && actualForex == null)) {
 				System.out.println("INN");
 				tfHighestSinglePrice.setText(actualCapital.maxValue()+"");
-				tfLowestSinglePrice.setText(actualCapital.minValue()+"");			
+				tfLowestSinglePrice.setText(actualCapital.minValue()+"");
+				tfPeriodTime.setText("");
 			}
 		}	
 	}

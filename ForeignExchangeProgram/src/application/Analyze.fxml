@@ -29,6 +29,8 @@
                   <TextField fx:id="tfLowestSinglePrice" editable="false" layoutX="103.0" layoutY="207.0" />
                   <Label layoutX="14.0" layoutY="253.0" text="Graph of the price status" />
                   <CheckBox layoutX="23.0" layoutY="275.0" mnemonicParsing="false" text="CheckBox" />
+                  <Label alignment="CENTER" layoutX="12.0" layoutY="324.0" prefHeight="40.0" prefWidth="275.0" text="Check the period of time where a Forex Market/Capital Market had its greatest growth." wrapText="true" />
+                  <TextField fx:id="tfPeriodTime" editable="false" layoutX="41.0" layoutY="389.0" prefHeight="25.0" prefWidth="212.0" />
                </children>
             </Pane>
             <Pane layoutX="313.0" layoutY="59.0" prefHeight="349.0" prefWidth="281.0">
