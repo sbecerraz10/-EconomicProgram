@@ -242,9 +242,62 @@ public class Market {
 	}
 	
 	
-	
-	
-	
+	private double[] FindMaximumSubarraySum(double[] slopes, int start, int end) {
+		double solution[] = {start,end, slopes[start]};
+		if(start == end){
+			return solution;
+		}else{
+			int mid = (int)Math.floor((end+start)/2);
+			double[] solutionLeft = FindMaximumSubarraySum(slopes,start,mid);
+
+			double[] solutionRight = FindMaximumSubarraySum(slopes,mid+1,end);
+
+			double[] solutionCross = FindMaximumCrossSubarray(slopes,start,mid,end);
+
+			if(solutionLeft[2] >= solutionRight[2] && solutionLeft[2] >= solutionCross[2] ){
+				solution = solutionLeft;
+			}else if(solutionLeft[2] <= solutionRight[2] && solutionRight[2] >= solutionCross[2]){
+				solution = solutionRight;
+			}else{
+				solution = solutionCross;
+			}
+
+		}
+
+		return solution;
+	}
+
+	private double[] FindMaximumCrossSubarray(double[] slopes, int start, int mid, int end) {
+		double left_sum = Double.MIN_VALUE;
+		double sum = 0;
+		double max_left = 0;
+
+
+		for(int I = end; I>=mid ; I--){
+			sum += slopes[I];
+
+			if(sum >= left_sum){
+				left_sum = sum;
+				max_left = I;
+			}
+
+		}
+
+		double right_sum = Double.MIN_VALUE;
+		sum = 0;
+		double max_right = 0;
+
+		for(int I = start; I<=  mid; I++ ){
+			sum += slopes[I];
+			if(sum >= right_sum ){
+				right_sum = sum;
+				max_right = I;
+			}
+		}
+
+		double [] ref = {max_left,max_right, left_sum + right_sum};
+		return ref;
+	}
 	
 
 }

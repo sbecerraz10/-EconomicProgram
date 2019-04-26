@@ -134,6 +134,7 @@ public class IndexController {
 				Main.getMarket().setCurrentFile(file);
 				//Cargar el metodo que recorta el archivo
 				Main.getMarket().loadCapitalMarket();
+				tfCapitalMarket.clear();
 			}
 			catch(NullPointerException e) {
 				Alert alert = new Alert(AlertType.ERROR);
@@ -150,6 +151,7 @@ public class IndexController {
 				Main.getMarket().setCurrentFile(file);
 				//Cargar el metodo que recorta el archivo
 				Main.getMarket().loadForexMarket();
+				tfForexMarket.clear();
 			}
 			catch(NullPointerException e) {
 				Alert alert = new Alert(AlertType.ERROR);
@@ -159,6 +161,7 @@ public class IndexController {
 				alert.showAndWait();
 			}	
 		});
+		
 	}
 	
 	
